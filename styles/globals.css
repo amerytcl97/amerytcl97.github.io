@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #141414;
+  --secondary-color: #ececec;
+}
+
+@layer components {
+  .required::after {
+    @apply ml-1 text-pink-400 content-["*"];
+  }
+  .contact-form__container {
+    @apply flex flex-col;
+  }
+  .contact-form__label {
+    @apply mb-1 text-sm font-light;
+  }
+  .contact-form__input {
+    @apply rounded-sm border bg-gray-100 p-2 text-sm font-light text-[var(--primary-color)] placeholder:text-xs valid:border-teal-200 valid:bg-teal-50 focus:outline-none;
+  }
+
+  .contact-form__error-msg {
+    @apply mt-1 text-xs font-light text-pink-400;
+  }
+}
+
+html,
+body {
+  padding: 0px;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  color: #141414;
+}
+
+.menu {
+}
+
+.submenu-close {
+  height: 0;
+  width: fit-content;
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+  transform-origin: top right;
+  opacity: 0;
+}
+
+.submenu-open {
+  height: 100%;
+  width: fit-content;
+  border-left: 1px solid #141414;
+  opacity: 1;
+  transition: all 0.2s ease-in-out;
+  transform-origin: top right;
+  padding-block: 0.5rem;
+}
+
+.underline-animated {
+  position: relative;
+}
+
+.underline-animated::after {
+  content: " ";
+  position: absolute;
+  width: 0%;
+  bottom: -1;
+  left: 0;
+  display: block;
+  border-radius: 15px;
+  transition: all 0.4s;
+}
+
+.underline-animated:hover::after {
+  content: " ";
+  position: absolute;
+  bottom: -1;
+  left: 0;
+  display: block;
+  border-radius: 15px;
+  border-bottom: 1px solid #141414;
+  width: 100%;
+}
+
+/* @media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: black;
+  }
+} */
