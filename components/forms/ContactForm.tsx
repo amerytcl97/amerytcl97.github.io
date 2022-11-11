@@ -52,8 +52,10 @@ const ContactForm = () => {
 
     return (
         <form onSubmit={handleFormSubmit} onInvalid={handleFormInvalid}>
-            <p className="text-xs font-light text-gray-600">Fields tagged with <span className="text-pink-400 text-base mb-5 inline-block">*</span> are required</p>
-            <fieldset disabled={formSubmitting} className="grid grid-cols-2 gap-5">
+            {/* <p className="text-xs font-light text-gray-600">
+                Fields tagged with <span className="text-pink-400 text-base inline-block">*</span> are required
+            </p> */}
+            <fieldset disabled={formSubmitting} className="grid grid-cols-2 gap-4 max-w-[35rem]">
                 <div className="contact-form__container">
                     <label htmlFor="name" className="contact-form__label required">Name</label>
                     <input type="text" id="name" name="name" value={contactForm.name} onChange={handleOnChange} className="contact-form__input peer" required />

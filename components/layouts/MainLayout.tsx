@@ -1,6 +1,9 @@
 import Head from "next/head";
 import React, { ReactElement, ReactNode } from "react";
+import Info from "../Info";
 import Sidebar from "../sidebar/Sidebar";
+import Footer from "./Footer";
+import Header from "./Header";
 
 type MainLayoutProps = {
   children: ReactElement | ReactNode;
@@ -17,9 +20,12 @@ function MainLayout({ children, title }: MainLayoutProps) {
         />
         <title>{title}</title>
       </Head>
-      <main className="flex flex-row">
-        <Sidebar />
-        <div className="py-14 px-10 ml-[18rem]">{children}</div>
+      <main>
+        <Header />
+        {/* <Sidebar /> */}
+        <div className="middle-container">{children}</div>
+        <Info />
+        {/* <Footer /> */}
       </main>
     </div>
   );

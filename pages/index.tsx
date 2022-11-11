@@ -1,12 +1,13 @@
-import MainLayout from "../components/layouts/MainLayout";
 import Contact from "../components/sections/Contact";
+import Aboutme from "./aboutme";
 
 function Home() {
-  
+
   return (
-    <MainLayout title="Portfolio - Amery">
+    <div>
+      <Aboutme />
       <Contact />
-    </MainLayout>
+    </div>
   );
 }
 

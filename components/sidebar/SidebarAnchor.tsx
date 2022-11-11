@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { ReactElement, ReactNode, useState } from "react";
 import ChevronDown from "../../icons/ChevronDown";
 import ChevronUp from "../../icons/ChevronUp";
@@ -17,6 +18,10 @@ const SidebarAnchor = ({
 }: SidebarAnchorProps) => {
   const [clicked, setClicked] = useState<boolean>(false);
 
+  const { pathname } = useRouter();
+
+  const isCurrentRoute = pathname === href;
+
   const onLinkClick = () => (clicked ? setClicked(false) : setClicked(true));
 
   const haveSideRoutes: boolean = sideRoutes.length > 0;
@@ -32,9 +37,8 @@ const SidebarAnchor = ({
           {mainRoute}
           {haveSideRoutes ? (
             <ChevronDown
-              className={`h-5 w-5 transition-all ${
-                clicked ? "rotate-180" : ""
-              }`}
+              className={`h-5 w-5 transition-all ${clicked ? "rotate-180" : ""
+                }`}
             />
           ) : (
             ""
@@ -43,9 +47,8 @@ const SidebarAnchor = ({
       </Link>
       {haveSideRoutes ? (
         <ul
-          className={`flex flex-col  ${
-            clicked ? "submenu-open" : "submenu-close"
-          }`}
+          className={`flex flex-col  ${clicked || isCurrentRoute ? "submenu-open" : "submenu-close"
+            }`}
         >
           {sideRoutes.map((sideRoute) => (
             <li key={sideRoute.url} className="underline-animated">
