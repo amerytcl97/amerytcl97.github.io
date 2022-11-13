@@ -17,7 +17,9 @@ module.exports = {
         "slide-down":
           "slide-down 0.3s ease-in-out var(--animation-delay) backwards",
         "line-extend": "line-extend 0.8s ease",
-        "slide-up-appear": "slide-up-appear 0.8s ease var(--animation-delay) backwards",
+        "slide-up-appear":
+          "slide-up-appear 0.8s ease var(--animation-delay) backwards",
+        "fade-appear-below": "fade-appear-below var(--animation-delay) ease-in-out",
       },
       keyframes: {
         "slide-down": {
@@ -44,6 +46,16 @@ module.exports = {
           },
           "100%": {
             transform: "translateY(0rem)",
+          },
+        },
+        "fade-appear-below": {
+          from: {
+            "transform" : "translateY(1rem)",
+            opacity: 0,
+          },
+          to: {
+            "transform" : "translateY(0rem)",
+            opacity: 1, 
           },
         },
       },

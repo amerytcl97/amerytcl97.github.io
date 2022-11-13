@@ -98,6 +98,25 @@ a {
   width: 100%;
 }
 
+/* .folder {
+  border-radius: 0.25rem;
+  background-color: #2c3531;
+  padding: 0.8rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.folder::before {
+  content: " ";
+  min-height: 1rem;
+  width: 50%;
+  border-width: 30px 0px 0px 120px;
+  border-color: transparent transparent transparent #44d2ff;
+  position: absolute;
+  top: -13px;
+  left: 0;
+} */
+
 /* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

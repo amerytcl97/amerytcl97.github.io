@@ -8,7 +8,7 @@ const Introduction = () => {
             <div className="flex flex-col max-w-2xl">
                 <span className="font-Roboto text-md text-[var(--secondary-color)]">Hi, my name is</span>
                 <h1 className="font-Raleway text-white text-6xl leading-[4.5rem] font-bold drop-shadow">
-                    Amery Tan
+                    Amery Tan 
                 </h1>
                 <span className="text-5xl font-Raleway font-bold text-slate-400 mt-2 mb-3 block">I am a Web Developer</span>
                 <p className="text-lg mt-4 font-Roboto font-medium text-slate-400 leading-8 drop-shadow">

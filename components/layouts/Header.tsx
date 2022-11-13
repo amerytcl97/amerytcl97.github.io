@@ -22,9 +22,8 @@ const routes: SectionRouteWCss[] = [
 
 const Header = () => {
     const { scrollPosition, direction } = useScroll();
-    console.log("check ", scrollPosition, direction);
     return (
-        <header className={`h-16 ${scrollPosition < 5 ? "shadow-none" : "shadow-md"} ${direction === "up"  ? "translate-y-0" : "-translate-y-[100vh]"} transition-all duration-300 sticky z-10 top-0 backdrop-blur-sm flex flex-row justify-between items-center px-10`}>
+        <header className={`h-16 ${scrollPosition < 5 ? "shadow-none" : "shadow-md"} ${direction === "up" || scrollPosition === 0 ? "translate-y-0" : "-translate-y-[100vh]"} transition-all duration-300 sticky z-10 top-0 backdrop-blur-sm flex flex-row justify-between items-center px-10`}>
             <Link href="#" className="text-5xl flex flex-row group font-Raleway font-medium text-[var(--secondary-color)]">
                 A<span className="text-inherit text-2xl group-hover:text-5xl transition-all delay-150 duration-200">
                     MERY
