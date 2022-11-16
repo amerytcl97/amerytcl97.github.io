@@ -30,7 +30,7 @@ const Info = () => {
                 </li>
             </ul>
             <hr className="my-2 block rounded animate-line-extend origin-right" />
-            <Link href="mailto:saramdee97@gmail.com" className="ml-2 hover:underline text-xs tracking-wider font-Roboto mt-2 block text-slate-300 underline-offset-2">
+            <Link href="mailto:saramdee97@gmail.com" className="ml-2 hover:underline text-sm tracking-wider font-mono mt-2 block text-slate-300 underline-offset-2">
                 saramdee97@gmail.com
             </Link>
         </div>

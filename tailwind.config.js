@@ -10,8 +10,12 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
+        sans: ["var(--font-inter)", ...fontFamily.sans],
         Raleway: ["Raleway", ...fontFamily.sans],
-        Roboto: ["Roboto Mono", ...fontFamily.sans],
+        mono: ["var(--font-roboto)", ...fontFamily.mono],
+        Rubik: ["var(--font-rubik)", ...fontFamily.sans],
+        Manrope: ["var(--font-manrope)", ...fontFamily.sans],
+        Cabin: ["var(--font-cabin)", ...fontFamily.sans],
       },
       animation: {
         "slide-down":
@@ -19,7 +23,8 @@ module.exports = {
         "line-extend": "line-extend 0.8s ease",
         "slide-up-appear":
           "slide-up-appear 0.8s ease var(--animation-delay) backwards",
-        "fade-appear-below": "fade-appear-below var(--animation-delay) ease-in-out",
+        "fade-appear-below":
+          "fade-appear-below var(--animation-delay) ease-in-out",
       },
       keyframes: {
         "slide-down": {
@@ -50,12 +55,12 @@ module.exports = {
         },
         "fade-appear-below": {
           from: {
-            "transform" : "translateY(1rem)",
+            transform: "translateY(1rem)",
             opacity: 0,
           },
           to: {
-            "transform" : "translateY(0rem)",
-            opacity: 1, 
+            transform: "translateY(0rem)",
+            opacity: 1,
           },
         },
       },

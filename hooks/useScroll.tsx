@@ -1,4 +1,4 @@
-import { useCallback, useLayoutEffect, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useState } from "react";
 
 function useScroll() {
     const [scrollPosition, setScrollPosition] = useState(0);
@@ -13,7 +13,7 @@ function useScroll() {
             setDirection("up");
         }
     }, [scrollPosition])
-    useLayoutEffect(() => {
+    useEffect(() => {
         window.addEventListener("scroll", updatePosition);
         return () => window.removeEventListener('scroll', updatePosition);
     }, [updatePosition])

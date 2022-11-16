@@ -4,19 +4,20 @@ import { SectionRoute } from "../../interfaces/SectionRoute";
 
 type SectionRouteWCss = SectionRoute & { css: string }
 
+
 const routes: SectionRouteWCss[] = [
     {
         url: "/aboutme",
-        name: "01.About",
+        name: "About",
         subRoutes: [
             { url: "/aboutme#introduction", name: "Introduction" },
             { url: "/aboutme#history", name: "History" },
         ],
         css: "[--animation-delay:0.1s]"
     },
-    { url: "#skills", name: "02.Skills", css: "[--animation-delay:0.2s]" },
-    { url: "#projects", name: "03.Projects", css: "[--animation-delay:0.3s]" },
-    { url: "#contact", name: "04.Contact", css: "[--animation-delay:0.4s]" },
+    { url: "#skills", name: "Skills", css: "[--animation-delay:0.2s]" },
+    { url: "#projects", name: "Projects", css: "[--animation-delay:0.3s]" },
+    { url: "#contact", name: "Contact", css: "[--animation-delay:0.4s]" },
 ];
 
 
@@ -33,12 +34,17 @@ const Header = () => {
                 <ul className="flex flex-row items-center gap-6">
                     {routes.map((route, index) =>
                         <li key={index} className={` animate-slide-down ${route.css}`}>
-                            <Link key={route.url} href={route.url} className={` text-[var(--secondary-color)] font-Roboto transition-all duration-200 font-normal text-xs hover:text-[var(--third-color)]`}>
-                                {route.name}
+                            <Link key={route.url} href={route.url} className=" font-mono text-[var(--secondary-color)] transition-all duration-200 font-light text-xs hover:text-[var(--third-color)]">
+                                <span className="text-[var(--secondary-color)]">
+                                    0{index + 1}.
+                                </span>
+                                <span className="text-slate-300 font-normal">
+                                    {route.name}
+                                </span>
                             </Link>
                         </li>)}
                     <li>
-                        <Link href="#" className="text-[var(--secondary-color)] font-Roboto font-normal border-2 border-[var(--secondary-color)] text-xs py-1 px-2 rounded-sm transition-colors hover:bg-[var(--secondary-color)] hover:text-[var(--primary-color)] animate-slide-down [--animation-delay:0.5s]">
+                        <Link href="#" className="text-[var(--secondary-color)] border-2 border-[var(--secondary-color)] text-sm py-1 px-2 rounded-sm transition-colors hover:bg-[var(--secondary-color)] hover:text-[var(--primary-color)] animate-slide-down [--animation-delay:0.5s]">
                             Resume
                         </Link>
                     </li>
