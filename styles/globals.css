@@ -9,9 +9,9 @@
   --description-color: #6b6e70;
 }
 
-@layer components {
+@layer base {
   h2 {
-    @apply font-mono text-[var(--secondary-color)] text-2xl;
+    @apply font-mono text-2xl text-[var(--secondary-color)];
   }
 
   h3 {
@@ -26,28 +26,91 @@
   a {
     @apply font-Manrope;
   }
-
-  .required::after {
-    @apply ml-1 text-pink-400 content-["*"];
-  }
-  .contact-form__container {
-    @apply flex flex-col;
-  }
-  .contact-form__label {
-    @apply mb-1 text-sm font-light;
-  }
-  .contact-form__input {
-    @apply rounded-sm border bg-gray-100 p-2 text-sm font-light text-[var(--primary-color)] placeholder:text-xs valid:border-teal-200 valid:bg-teal-50 focus:outline-none;
-  }
-  .contact-form__error-msg {
-    @apply mt-1 text-xs font-light text-pink-400;
-  }
-  .middle-container {
-    @apply mx-auto block max-w-[860px];
-  }
 }
 
-@layer utilities {
+@layer components {
+  .middle-container {
+    @apply container mx-auto px-3;
+  }
+
+  .themed-button {
+    @apply border-2 border-[var(--secondary-color)] p-2 text-xs text-[var(--secondary-color)] transition-all duration-300 hover:cursor-pointer hover:bg-[var(--secondary-color)] hover:text-[var(--primary-color)];
+  }
+
+  .special-shadow {
+    box-shadow: rgba(190, 24, 93, 0.4) 5px 5px, rgba(190, 24, 93, 0.3) 10px 10px,
+      rgba(190, 24, 93, 0.2) 15px 15px, rgba(190, 24, 93, 0.1) 20px 20px,
+      rgba(190, 24, 93, 0.05) 25px 25px;
+    transition: all 0.5s;
+  }
+
+  .special-shadow:hover {
+    box-shadow: rgba(190, 24, 93, 1) 10px 10px;
+    /* rgba(190, 24, 93, 0.3) 10px 10px,
+      rgba(190, 24, 93, 0.2) 15px 15px, 
+      rgba(190, 24, 93, 0.1) 20px 20px,
+      rgba(190, 24, 93, 0.05) 25px 25px; */
+  }
+
+  .line-after {
+    position: relative;
+  }
+
+  .line-after::after {
+    content: ' ';
+    border-bottom: 1px solid #475569;
+    width: 50%;
+    display: inline-block;
+    margin-top: 1rem;
+    margin-left: 2.8rem;
+    position: absolute;
+    border-radius: 15px;
+  }
+
+  .submenu-close {
+    height: 0;
+    width: fit-content;
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
+    transform-origin: top right;
+    opacity: 0;
+  }
+
+  .submenu-open {
+    height: 100%;
+    width: fit-content;
+    border-left: 1px solid #141414;
+    opacity: 1;
+    transition: all 0.2s ease-in-out;
+    transform-origin: top right;
+    padding-block: 0.5rem;
+  }
+
+  .underline-animated {
+    position: relative;
+  }
+
+  .underline-animated::after {
+    content: ' ';
+    position: absolute;
+    width: 0%;
+    bottom: -1;
+    left: 0;
+    display: block;
+    border-radius: 15px;
+    transition: all 0.4s;
+  }
+
+  .underline-animated:hover::after {
+    content: ' ';
+    position: absolute;
+    bottom: -1;
+    left: 0;
+    display: block;
+    border-radius: 15px;
+    border-bottom: 1px solid #141414;
+    width: 100%;
+  }
 }
 
 html,
@@ -55,83 +118,4 @@ body {
   padding: 0px;
   margin: 0;
   background-color: var(--primary-color);
-}
-
-.special-shadow {
-  box-shadow: rgba(190, 24, 93, 0.4) 5px 5px, rgba(190, 24, 93, 0.3) 10px 10px,
-    rgba(190, 24, 93, 0.2) 15px 15px, rgba(190, 24, 93, 0.1) 20px 20px,
-    rgba(190, 24, 93, 0.05) 25px 25px;
-
-  transition: all 0.5s;
-}
-
-.special-shadow:hover {
-  box-shadow: rgba(190, 24, 93, 1) 10px 10px;
-  /* rgba(190, 24, 93, 0.3) 10px 10px,
-    rgba(190, 24, 93, 0.2) 15px 15px, 
-    rgba(190, 24, 93, 0.1) 20px 20px,
-    rgba(190, 24, 93, 0.05) 25px 25px; */
-}
-
-.line-after {
-  position: relative;
-}
-
-.line-after::after {
-  content: " ";
-  border-bottom: 1px solid #475569;
-  width: 50%;
-  display: inline-block;
-  margin-top: 1rem;
-  margin-left: 2.8rem;
-  position: absolute;
-  border-radius: 15px;
-}
-
-.menu {
-}
-
-.submenu-close {
-  height: 0;
-  width: fit-content;
-  overflow: hidden;
-  transition: all 0.2s ease-in-out;
-  transform-origin: top right;
-  opacity: 0;
-}
-
-.submenu-open {
-  height: 100%;
-  width: fit-content;
-  border-left: 1px solid #141414;
-  opacity: 1;
-  transition: all 0.2s ease-in-out;
-  transform-origin: top right;
-  padding-block: 0.5rem;
-}
-
-.underline-animated {
-  position: relative;
-}
-
-.underline-animated::after {
-  content: " ";
-  position: absolute;
-  width: 0%;
-  bottom: -1;
-  left: 0;
-  display: block;
-  border-radius: 15px;
-  transition: all 0.4s;
-}
-
-.underline-animated:hover::after {
-  content: " ";
-  position: absolute;
-  bottom: -1;
-  left: 0;
-  display: block;
-  border-radius: 15px;
-  border-bottom: 1px solid #141414;
-  width: 100%;
 }

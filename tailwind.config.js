@@ -2,11 +2,7 @@
 const { fontFamily } = require("tailwindcss/defaultTheme");
 
 module.exports = {
-  content: [
-    "./app/**/*.{js,ts,jsx,tsx}",
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./app/**/*.{js,ts,jsx,tsx}", "./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       fontFamily: {
@@ -18,13 +14,10 @@ module.exports = {
         Cabin: ["var(--font-cabin)", ...fontFamily.sans],
       },
       animation: {
-        "slide-down":
-          "slide-down 0.3s ease-in-out var(--animation-delay) backwards",
+        "slide-down": "slide-down 0.3s ease-in-out var(--animation-delay) backwards",
         "line-extend": "line-extend 0.8s ease",
-        "slide-up-appear":
-          "slide-up-appear 0.8s ease var(--animation-delay) backwards",
-        "fade-appear-below":
-          "fade-appear-below var(--animation-delay) ease-in-out",
+        "slide-up-appear": "slide-up-appear 0.8s ease var(--animation-delay) backwards",
+        "fade-appear-below": "fade-appear-below var(--animation-delay) ease-in-out",
       },
       keyframes: {
         "slide-down": {

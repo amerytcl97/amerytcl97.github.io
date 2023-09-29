@@ -1,58 +1,69 @@
-import Link from "next/link";
-import useScroll from "../../hooks/useScroll";
-import { SectionRoute } from "../../interfaces/SectionRoute";
+import Link from 'next/link';
+import { clsx } from 'clsx';
+import useScroll from '@/hooks/useScroll';
+import { SectionRoute } from '@/interfaces/SectionRoute';
+import DownloadResumeButton from '../DownloadResumeButton';
 
-type SectionRouteWCss = SectionRoute & { css: string }
-
+type SectionRouteWCss = SectionRoute & { css: string };
 
 const routes: SectionRouteWCss[] = [
-    {
-        url: "/aboutme",
-        name: "About",
-        subRoutes: [
-            { url: "/aboutme#introduction", name: "Introduction" },
-            { url: "/aboutme#history", name: "History" },
-        ],
-        css: "[--animation-delay:0.1s]"
-    },
-    { url: "#skills", name: "Skills", css: "[--animation-delay:0.2s]" },
-    { url: "#projects", name: "Projects", css: "[--animation-delay:0.3s]" },
-    { url: "#contact", name: "Contact", css: "[--animation-delay:0.4s]" },
+  {
+    url: '/aboutme',
+    name: 'About',
+    subRoutes: [
+      { url: '/aboutme#introduction', name: 'Introduction' },
+      { url: '/aboutme#history', name: 'History' },
+    ],
+    css: '[--animation-delay:0.1s]',
+  },
+  { url: '#skills', name: 'Skills', css: '[--animation-delay:0.2s]' },
+  { url: '#projects', name: 'Projects', css: '[--animation-delay:0.3s]' },
+  { url: '#contact', name: 'Contact', css: '[--animation-delay:0.4s]' },
 ];
 
-
 const Header = () => {
-    const { scrollPosition, direction } = useScroll();
-    return (
-        <header className={`h-16 ${scrollPosition < 5 ? "shadow-none" : "shadow-md"} ${direction === "up" || scrollPosition === 0 ? "translate-y-0" : "-translate-y-[100vh]"} transition-all duration-300 sticky z-10 top-0 backdrop-blur-sm flex flex-row justify-between items-center px-10`}>
-            <Link href="#" className="text-5xl flex flex-row group font-Raleway font-medium text-[var(--secondary-color)]">
-                A<span className="text-inherit text-2xl group-hover:text-5xl transition-all delay-150 duration-200">
-                    MERY
-                </span>
-            </Link>
-            <nav >
-                <ul className="flex flex-row items-center gap-6">
-                    {routes.map((route, index) =>
-                        <li key={index} className={` animate-slide-down ${route.css}`}>
-                            <Link key={route.url} href={route.url} className=" font-mono text-[var(--secondary-color)] transition-all duration-200 font-light text-xs hover:text-[var(--third-color)]">
-                                <span className="text-[var(--secondary-color)]">
-                                    0{index + 1}.
-                                </span>
-                                <span className="text-slate-300 font-normal">
-                                    {route.name}
-                                </span>
-                            </Link>
-                        </li>)}
-                    <li>
-                        <Link href="#" className="text-[var(--secondary-color)] border-2 border-[var(--secondary-color)] text-sm py-1 px-2 rounded-sm transition-colors hover:bg-[var(--secondary-color)] hover:text-[var(--primary-color)] animate-slide-down [--animation-delay:0.5s]">
-                            Resume
-                        </Link>
-                    </li>
-                </ul>
+  const { scrollPosition, direction } = useScroll();
 
-            </nav>
-        </header>
-    )
-}
+  const isScrollingUpAndTop = direction === 'up' || scrollPosition <= 10;
+
+  return (
+    <header
+      className={clsx(
+        `sticky  top-0 z-10 flex h-16 flex-row items-center justify-between backdrop-blur-sm transition-all duration-300`,
+        scrollPosition < 10 ? 'shadow-none' : 'shadow-md',
+        isScrollingUpAndTop ? 'translate-y-0 shadow-none' : '-translate-y-[100vh] shadow-md'
+      )}
+    >
+      <Link
+        href="#"
+        className="group flex flex-row font-Raleway text-5xl font-medium text-[var(--secondary-color)]"
+      >
+        A
+        <span className="text-2xl text-inherit transition-all delay-150 duration-200 group-hover:text-5xl">
+          MERY
+        </span>
+      </Link>
+      <nav>
+        <ul className="flex flex-row items-center gap-6">
+          {routes.map((route, index) => (
+            <li key={index} className={` animate-slide-down ${route.css}`}>
+              <Link
+                key={route.url}
+                href={route.url}
+                className=" font-mono text-xs font-light text-[var(--secondary-color)] transition-all duration-200 hover:text-[var(--third-color)]"
+              >
+                <span className="text-[var(--secondary-color)]">0{index + 1}.</span>
+                <span className="font-normal text-slate-300">{route.name}</span>
+              </Link>
+            </li>
+          ))}
+          <li>
+            <DownloadResumeButton />
+          </li>
+        </ul>
+      </nav>
+    </header>
+  );
+};
 
 export default Header;

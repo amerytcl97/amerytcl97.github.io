@@ -1,6 +1,7 @@
-import { Project } from "../interfaces/Project"
+import { Project } from "@/interfaces/Project";
 
-const projects: Project[] = [
+
+export const PROJECTS: Project[] = [
     {
         title: "Cross platform Mobile Application",
         description: "Building a custom multisite compatible WordPress plugin to build global search with Algolia",
@@ -39,5 +40,3 @@ const projects: Project[] = [
 
 ]
 
-
-export { projects }

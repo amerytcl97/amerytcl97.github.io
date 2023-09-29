@@ -1,41 +1,43 @@
-import { useState } from "react";
-import { Project } from "../interfaces/Project";
-import ProjectCard from "./ProjectCard";
-import Projects from "./sections/Projects";
+import { Project } from '@/interfaces/Project';
+import { useState } from 'react';
+import ProjectCard from './ProjectCard';
+import clsx from 'clsx';
 
 type ProjectListProps = {
-    projects: Project[];
-}
+  projects: Project[];
+};
 
-const LIMIT_CARDS = 6
+const LIMIT_CARDS = 6;
 
 const ProjectList = ({ projects }: ProjectListProps) => {
-    const [showMore, setShowMore] = useState(false);
+  const [showMore, setShowMore] = useState(false);
 
-    return (
-        <div className="my-4 flex flex-col justify-center place-items-center place-content-center">
-            <ul className="grid grid-cols-3 gap-10">
-                {projects.map((project, index) =>
-                    <li
-                        key={index}
-                        className={`${index >= LIMIT_CARDS && !showMore
-                            ? "hidden"
-                            : "block"} animate-fade-appear-below [--animation-delay:0.5s]`}
-                    >
-                        <ProjectCard {...project} index={index} />
-                    </li>)}
-            </ul>
-            {projects.length > LIMIT_CARDS &&
-                <button
-                    type="button"
-                    onClick={() => showMore ? setShowMore(false) : setShowMore(true)}
-                    className="border-2 hover:bg-[var(--secondary-color)] hover:text-[var(--primary-color)] border-[var(--secondary-color)] p-2 mt-8 text-xs hover:cursor-pointer text-[var(--secondary-color)] font-Roboto"
-                >
-                    {showMore ? "Show less" : "Show more"}
-                </button>
-            }
-        </div>
-    )
-}
+  return (
+    <div className="my-4 flex flex-col place-content-center place-items-center justify-center">
+      <ul className="lg: grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
+        {projects.map((project, index) => (
+          <li
+            key={index}
+            className={clsx(
+              'animate-fade-appear-below [--animation-delay:0.5s]',
+              index >= LIMIT_CARDS && !showMore ? 'hidden' : 'block'
+            )}
+          >
+            <ProjectCard {...project} index={index} />
+          </li>
+        ))}
+      </ul>
+      {projects.length > LIMIT_CARDS && (
+        <button
+          type="button"
+          onClick={() => (showMore ? setShowMore(false) : setShowMore(true))}
+          className="themed-button"
+        >
+          {showMore ? 'Show less' : 'Show more'}
+        </button>
+      )}
+    </div>
+  );
+};
 
 export default ProjectList;
